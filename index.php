@@ -28,16 +28,36 @@ if($_POST){
         $oid = $_POST['oid'];
         $uid = $_POST['uid'];
         $eid = $_POST['eid'];
+		$Textbox9 = $_POST['Textbox9'];
+		$Textbox10 = $_POST['Textbox10'];
+		$Textbox11 = $_POST['Textbox11'];
+		$Textbox12 = $_POST['Textbox12'];
+		$Textbox13 = $_POST['Textbox13'];
         $Textbox14 = $_POST['Textbox14'];
-        $Textbox10 = $_POST['Textbox10'];
+		$Textbox15 = $_POST['Textbox15'];
+        $Textbox16 = $_POST['Textbox16'];
+		
+
+
+
+
+
+
+
 	try{
         $procesesStr = $client->findFormOIDsOfProcess($oid);
         $proceses = explode(",", $procesesStr);
         $process = $proceses[0];
         $template = $client->getFormFieldTemplate($process);
         $form = simplexml_load_string($template);
-        $form->Textbox14 = $Textbox14;
+        $form->Textbox9 = $Textbox9;
         $form->Textbox10 = $Textbox10;
+		$form->Textbox11 = $Textbox11;
+        $form->Textbox12 = $Textbox12;
+		$form->Textbox13 = $Textbox13;
+        $form->Textbox14 = $Textbox14;
+		$form->Textbox15 = $Textbox15;
+        $form->Textbox16 = $Textbox16;
         $result = $form->asXML();
         $DocNo = $client->invokeProcess($oid, $eid, $uid, $process, $result, "伺服器代管申請作業");
 
@@ -95,17 +115,60 @@ if($_POST){
                 </div>
           </div>
 
+
           <div class="row">
               <div class="col-md-12 mb-3">
-                  <label for="Textbox14">天數</label>
-                  <input name="Textbox14" type="text" class="form-control" id="Textbox14" placeholder="" value="" >
+                  <label for="Textbox9">申請人</label>
+                  <input name="Textbox9" type="text" class="form-control" id="Textbox9" placeholder="" value="" >
                 </div>
           </div>
 
           <div class="row">
               <div class="col-md-12 mb-3">
                   <label for="Textbox10">單位</label>
-                  <input name="Textbox10" type="text" class="form-control" id="Textbox10" placeholder="" value="" required>
+                  <input name="Textbox10" type="text" class="form-control" id="Textbox10" placeholder="" value="" >
+                </div>
+          </div>
+
+		  <div class="row">
+              <div class="col-md-12 mb-3">
+                  <label for="Textbox11">開始日期</label>
+                  <input name="Textbox11" type="text" class="form-control" id="Textbox11" placeholder="" value="" >
+                </div>
+          </div>
+
+		  <div class="row">
+              <div class="col-md-12 mb-3">
+                  <label for="Textbox12">結束日期</label>
+                  <input name="Textbox12" type="text" class="form-control" id="Textbox12" placeholder="" value="" >
+                </div>
+          </div>
+
+		  <div class="row">
+              <div class="col-md-12 mb-3">
+                  <label for="Textbox13">出差地點</label>
+                  <input name="Textbox13" type="text" class="form-control" id="Textbox13" placeholder="" value="" >
+                </div>
+          </div>
+
+		  <div class="row">
+              <div class="col-md-12 mb-3">
+                  <label for="Textbox14">天數</label>
+                  <input name="Textbox14" type="text" class="form-control" id="Textbox14" placeholder="" value="" >
+                </div>
+          </div>
+
+		  <div class="row">
+              <div class="col-md-12 mb-3">
+                  <label for="Textbox15">車馬費</label>
+                  <input name="Textbox15" type="text" class="form-control" id="Textbox15" placeholder="" value="" >
+                </div>
+          </div>
+
+		  <div class="row">
+              <div class="col-md-12 mb-3">
+                  <label for="Textbox16">住宿費</label>
+                  <input name="Textbox16" type="text" class="form-control" id="Textbox16" placeholder="" value="" >
                 </div>
           </div>
 
